@@ -18,14 +18,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //defining reset function
     function resetFunction() {
-              console.log("reset ran");
       var board = document.getElementById("board");
       for(var i = 0; i < board.children.length; i++){
         board.children[i].addEventListener("click", clickCell);
         board.children[i].textContent="";
         board.children[i].style.backgroundColor= "white";
-        console.log("event listener re-added");
-
         state = 1; //resets state back to "X"
       }
     }
@@ -37,23 +34,16 @@ document.addEventListener("DOMContentLoaded", function() {
         if (state % 2 === 0) {
           document.getElementById(this.id).textContent="X";
           this.style.backgroundColor = "red";
+          //this.classList.add("redCell");
         } else {
           document.getElementById(this.id).textContent="O";
           this.style.backgroundColor = "blue";
-//??????? how can I make this swtich to class?
-//document.getElementById(this.id).className = .blueCell;
+          //this.classList.add("blueCell");   //.style.class= "bluecell";
+
+//??????? how can I make this swtich to class? this didn't work, document.getElementById(this.id).className = .blueCell;
         };
         //remove event listner after click
         document.getElementById(this.id).removeEventListener("click", clickCell);
     }
-
-    //adding reset function
-    function reset() {
-      document.getElementById("board").style.backgroundColor = "lightblue";
-      for(var i = 0; i < board.children.length; i++){
-        board.children[i].addEventListener("click", reset);
-      }
-    }
-
 
 });
